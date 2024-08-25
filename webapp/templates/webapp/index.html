@@ -1,0 +1,43 @@
+{% extends 'webapp/base.html' %}
+
+{% block body %}
+{% if tagcodes %}     
+
+{% load staticfiles %} 
+        
+    <h1>Enter the Defected Unit</h1>
+    <ul>
+        <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'webapp/style.css' %}"/>
+        
+       <form method="GET" action="/GetTagCode/Result/">
+      
+            <input type="number" name="TagCode" id="TG">
+            <button type="submit" >SUBMIT</button>
+            
+            
+       </form>  
+    </ul>
+    
+    
+{% else %}
+    <h3>tagcode not found</h3>
+{% endif %} 
+{% endblock %}
+{% block codee %}
+
+   <h1>-------GET REPORT-------</h1>
+
+
+    <p></p>
+    
+      
+
+    <form method="GET" action="/GetTagCode/Report/">
+      
+    
+        <button type="submit" >Report</button>
+        
+        
+    </form> 
+{% endblock %}

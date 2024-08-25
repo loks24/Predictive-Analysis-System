@@ -1,0 +1,28 @@
+{% extends 'webapp/base.html' %}
+
+{% block co %}
+{% load staticfiles %} 
+<style>
+    .center {
+              text-align: center;
+              border: 3px solid green;
+            }
+
+    .cen{
+        text-align: center;
+    }
+</style>
+<div class="cen"><h1>Units need to Repair</h1></div>
+<link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'webapp/style.css' %}"/>
+{% for co in codes %}
+    {% if co.CurrentValue < co.MinValue or co.CurrentValue > co.MaxValue %}
+    <div class="center">
+       <ul>
+           <li><b>{{co.TagCode}}</b>--<i>{{co.Name}}</i> </li>
+            <h5>Out Of Boundary Alarm!!!</h5>
+        </ul> 
+    </div>   
+    {% endif %}     
+{% endfor %}
+{% endblock %}
